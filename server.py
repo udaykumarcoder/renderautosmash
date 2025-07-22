@@ -60,6 +60,8 @@ class SmashKartsRenderBot:
             
             self.status = "browser_ready"
             print("✅ Browser started on Render!")
+            self.log("✅ Browser started on Render!")
+
             return True
             
         except Exception as e:
