@@ -59,7 +59,7 @@ class SmashKartsRenderBot:
             self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
             
             self.status = "browser_ready"
-            print("✅ Browser started on Render!")
+            print("✅ Browser started on Render!",flush=True)
             self.log("✅ Browser started on Render!")
 
             return True
@@ -93,12 +93,12 @@ class SmashKartsRenderBot:
                 iframe = WebDriverWait(self.driver, 15).until(
                     EC.presence_of_element_located((By.TAG_NAME, "iframe"))
                 )
-                print("✅ Found game iframe")
+                print("✅ Found game iframe",flush=True)
                 
                 # Switch to iframe context to control the game
                 self.driver.switch_to.frame(iframe)
-                print("✅ Switched to game iframe context")
-                
+                print("✅ Switched to game iframe context",flush=True)
+
                 # Focus on the game content
                 body = self.driver.find_element(By.TAG_NAME, "body")
                 body.click()
