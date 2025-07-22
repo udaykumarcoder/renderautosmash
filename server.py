@@ -311,11 +311,13 @@ def start_bot_automatically():
 @app.route('/')
 def index():
     """Main page - shows Smash Karts embedded"""
+    print("[INFO] / route accessed: game_embedded.html loaded", flush=True)
     return render_template('game_embedded.html')
 
 @app.route('/control')
 def control_panel():
     """Control panel page - can be embedded in iframe"""
+    print("[INFO] /control route accessed: control_panel.html loaded", flush=True)
     return render_template('control_panel.html')
 
 @app.route('/api/start_bot', methods=['POST'])
@@ -404,4 +406,4 @@ def cleanup_bot():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False) 
+    app.run(host='0.0.0.0', port=port, debug=True) 
