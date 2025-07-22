@@ -12,17 +12,16 @@ class SmashKartsKeySpammer:
 
     def setup_browser(self):
         chrome_options = Options()
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('--disable-logging')
-        chrome_options.add_argument('--disable-extensions')
-        chrome_options.add_argument('--disable-web-security')
         chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--window-size=1920,1080')
-        print('🌐 Starting browser...')
+        chrome_options.add_argument('--disable-dev-shm-usage')  # avoids /dev/shm memory errors
+        chrome_options.add_argument('--no-sandbox')             # required in containers
+        chrome_options.add_argument('--disable-gpu')            # helps in memory-constrained envs
+        chrome_options.add_argument('--disable-extensions')
+        chrome_options.add_argument('--window-size=1280x720')
+        chrome_options.add_argument('--remote-debugging-port=9222')  # optional
+        print('🌐 Starting browser...', flush=True)
         self.driver = webdriver.Chrome(options=chrome_options)
-        print('✅ Browser started!')
+        print('✅ Browser started!', flush=True)
 
     def load_and_spam_keys(self):
         print('[BOT] Navigating to https://smashkarts.io ...', flush=True)
